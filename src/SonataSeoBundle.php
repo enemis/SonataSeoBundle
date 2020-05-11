@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle;
 
-use Sonata\SeoBundle\DependencyInjection\Compiler\BreadcrumbBlockServicesCompilerPass;
 use Sonata\SeoBundle\DependencyInjection\Compiler\ServiceCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -26,8 +25,7 @@ class SonataSeoBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
-
-        $container->addCompilerPass(new BreadcrumbBlockServicesCompilerPass());
+        
         $container->addCompilerPass(new ServiceCompilerPass());
     }
 }

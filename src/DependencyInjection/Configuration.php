@@ -52,46 +52,12 @@ class Configuration implements ConfigurationInterface
                             ->end()
                         ->end()
                         ->scalarNode('separator')->defaultValue(' - ')->end()
-                        // NEXT_MAJOR: Make this field required
-                        ->scalarNode('title')->defaultValue('Project name')->end()
-                    ->end()
-                ->end()
-                ->arrayNode('sitemap')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->arrayNode('doctrine_orm')
-                            ->prototype('variable')->end()
-                        ->end()
-                        ->arrayNode('services')
-                            ->prototype('variable')->end()
-                        ->end()
+                        ->scalarNode('title')->end()
                     ->end()
                 ->end()
             ->end()
         ;
 
-        $this->addHttpClientSection($rootNode);
-
         return $treeBuilder;
-    }
-
-    private function addHttpClientSection(ArrayNodeDefinition $node): void
-    {
-        $node
-            ->children()
-                ->arrayNode('http')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('client')
-                            ->defaultNull()
-                            ->info('Alias of the http client.')
-                        ->end()
-                        ->scalarNode('message_factory')
-                            ->defaultNull()
-                            ->info('Alias of the message factory.')
-                        ->end()
-                    ->end()
-                ->end()
-            ->end();
     }
 }

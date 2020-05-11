@@ -21,27 +21,16 @@
     ],
     "require": {
         "php": "^7.1",
-        "psr/http-client": "^1.0",
-        "psr/http-message": "^1.0",
-        "sonata-project/exporter": "^1.11 || ^2.0",
         "symfony/config": "^4.4 || ^5.0",
         "symfony/dependency-injection": "^4.4 || ^5.0",
         "symfony/form": "^4.4 || ^5.0",
         "symfony/framework-bundle": "^4.4 || ^5.0",
         "symfony/http-foundation": "^4.4 || ^5.0",
         "symfony/http-kernel": "^4.4 || ^5.0",
-        "symfony/options-resolver": "^4.4 || ^5.0",
         "twig/twig": "^2.9 || ^3.0"
     },
-    "conflict": {
-        "sonata-project/block-bundle": "<3.11"
-    },
     "require-dev": {
-        "guzzlehttp/guzzle": "^6.0",
         "nyholm/psr7": "^1.2",
-        "sonata-project/admin-bundle": "^3.31",
-        "sonata-project/block-bundle": "^3.17",
-        "sonata-project/core-bundle": "^3.9",
         "symfony/console": "^4.4 || ^5.0",
         "symfony/filesystem": "^4.4 || ^5.0",
         "symfony/finder": "^4.4 || ^5.0",
@@ -49,16 +38,12 @@
         "symfony/phpunit-bridge": "^4.4 || ^5.0",
         "symfony/yaml": "^4.4 || ^5.0"
     },
-    "suggest": {
-        "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder",
-        "symfony/http-client": "Symfony client implementation for TwitterEmbedTweetBlockService"
-    },
     "config": {
         "sort-packages": true
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.x-dev"
+            "dev-master": "4.x-dev"
         }
     },
     "autoload": {

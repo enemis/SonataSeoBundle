@@ -19,20 +19,10 @@ use Twig\TwigFunction;
 
 class SeoExtension extends AbstractExtension
 {
-    /**
-     * @var SeoPageInterface
-     */
     protected $page;
-
-    /**
-     * @var string
-     */
     protected $encoding;
 
-    /**
-     * @param string $encoding
-     */
-    public function __construct(SeoPageInterface $page, $encoding)
+    public function __construct(SeoPageInterface $page, string $encoding)
     {
         $this->page = $page;
         $this->encoding = $encoding;
@@ -54,58 +44,17 @@ class SeoExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'sonata_seo';
     }
 
-    /**
-     * NEXT_MAJOR: remove this method.
-     *
-     * @deprecated since 2.0, to be removed in 3.0
-     */
-    public function renderTitle()
-    {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
-            'Use '.__NAMESPACE__.'::getTitle() instead.',
-            E_USER_DEPRECATED
-        );
-
-        echo $this->getTitle();
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
+    public function getTitle(): string
     {
         return sprintf('<title>%s</title>', strip_tags($this->page->getTitle()));
     }
 
-    /**
-     * NEXT_MAJOR: remove this method.
-     *
-     * @deprecated since 2.0, to be removed in 3.0
-     */
-    public function renderMetadatas()
-    {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
-            'Use '.__NAMESPACE__.'::getMetadatas() instead.',
-            E_USER_DEPRECATED
-        );
-
-        echo $this->getMetadatas();
-    }
-
-    /**
-     * @return string
-     */
-    public function getMetadatas()
+    public function getMetadatas(): string
     {
         $html = '';
         foreach ($this->page->getMetas() as $type => $metas) {
@@ -132,26 +81,7 @@ class SeoExtension extends AbstractExtension
         return $html;
     }
 
-    /**
-     * NEXT_MAJOR: remove this method.
-     *
-     * @deprecated since 2.0, to be removed in 3.0
-     */
-    public function renderHtmlAttributes()
-    {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
-            'Use '.__NAMESPACE__.'::getHtmlAttributes() instead.',
-            E_USER_DEPRECATED
-        );
-
-        echo $this->getHtmlAttributes();
-    }
-
-    /**
-     * @return string
-     */
-    public function getHtmlAttributes()
+    public function getHtmlAttributes(): string
     {
         $attributes = '';
         foreach ($this->page->getHtmlAttributes() as $name => $value) {
@@ -161,26 +91,7 @@ class SeoExtension extends AbstractExtension
         return rtrim($attributes);
     }
 
-    /**
-     * NEXT_MAJOR: remove this method.
-     *
-     * @deprecated since 2.0, to be removed in 3.0
-     */
-    public function renderHeadAttributes()
-    {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
-            'Use '.__NAMESPACE__.'::getHeadAttributes() instead.',
-            E_USER_DEPRECATED
-        );
-
-        echo $this->getHeadAttributes();
-    }
-
-    /**
-     * @return string
-     */
-    public function getHeadAttributes()
+    public function getHeadAttributes(): string
     {
         $attributes = '';
         foreach ($this->page->getHeadAttributes() as $name => $value) {
@@ -190,52 +101,14 @@ class SeoExtension extends AbstractExtension
         return rtrim($attributes);
     }
 
-    /**
-     * NEXT_MAJOR: remove this method.
-     *
-     * @deprecated since 2.0, to be removed in 3.0
-     */
-    public function renderLinkCanonical()
-    {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
-            'Use '.__NAMESPACE__.'::getLinkCanonical() instead.',
-            E_USER_DEPRECATED
-        );
-
-        echo $this->getLinkCanonical();
-    }
-
-    /**
-     * @return string
-     */
-    public function getLinkCanonical()
+    public function getLinkCanonical(): string
     {
         if ($this->page->getLinkCanonical()) {
             return sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
         }
     }
 
-    /**
-     * NEXT_MAJOR: remove this method.
-     *
-     * @deprecated since 2.0, to be removed in 3.0
-     */
-    public function renderLangAlternates()
-    {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
-            'Use '.__NAMESPACE__.'::getLangAlternates() instead.',
-            E_USER_DEPRECATED
-        );
-
-        echo $this->getLangAlternates();
-    }
-
-    /**
-     * @return string
-     */
-    public function getLangAlternates()
+    public function getLangAlternates(): string
     {
         $html = '';
         foreach ($this->page->getLangAlternates() as $href => $hrefLang) {
@@ -245,10 +118,7 @@ class SeoExtension extends AbstractExtension
         return $html;
     }
 
-    /**
-     * @return string
-     */
-    public function getOembedLinks()
+    public function getOembedLinks(): string
     {
         $html = '';
         foreach ($this->page->getOEmbedLinks() as $title => $link) {
@@ -258,12 +128,7 @@ class SeoExtension extends AbstractExtension
         return $html;
     }
 
-    /**
-     * @param string $string
-     *
-     * @return mixed
-     */
-    private function normalize($string)
+    private function normalize($string): string
     {
         return htmlentities(strip_tags((string) $string), ENT_COMPAT, $this->encoding);
     }

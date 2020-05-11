@@ -31,14 +31,6 @@ class ConfigurationTest extends TestCase
                 'separator' => ' - ',
                 'title' => 'Project name',
             ],
-            'sitemap' => [
-                'doctrine_orm' => [],
-                'services' => [],
-            ],
-            'http' => [
-                'client' => null,
-                'message_factory' => null,
-            ],
         ];
 
         $this->assertSame($expected, $this->processConfiguration([[]]));
@@ -97,14 +89,6 @@ class ConfigurationTest extends TestCase
                 'title' => 'Project name',
             ],
             'encoding' => 'UTF-8',
-            'sitemap' => [
-                'doctrine_orm' => [],
-                'services' => [],
-            ],
-            'http' => [
-                'client' => null,
-                'message_factory' => null,
-            ],
         ];
     }
 
