@@ -1,7 +1,7 @@
 {
-    "name": "sonata-project/seo-bundle",
+    "name": "enemis/sonata-seo-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony SonataSeoBundle",
+    "description": "Symfony SonataSeoBundle, reduced packages without ONLY Seo part",
     "keywords": [
         "seo",
         "sonata"
