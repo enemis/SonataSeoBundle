@@ -103,9 +103,13 @@ class SeoExtension extends AbstractExtension
 
     public function getLinkCanonical(): string
     {
+        $html = '';
+
         if ($this->page->getLinkCanonical()) {
             return sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
         }
+
+        return $html;
     }
 
     public function getLangAlternates(): string
